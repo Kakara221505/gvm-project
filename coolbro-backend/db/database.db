@@ -1,0 +1,422 @@
+-- Drop all table if already exist
+DROP TABLE CoolBro.User;
+DROP TABLE CoolBro.UserRole;
+
+
+-- Create the UserRole table
+CREATE TABLE CoolBro.UserRole (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(20),
+    Description TEXT,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT
+);
+
+--Insert default role
+INSERT INTO `CoolBro`.`UserRole`(`Name`, `Description`)
+VALUES("ADMIN", ""),("USER", ""),("SUPERADMIN", ""),("DISTRIBUTOR", ""),("DEALER", ""),("STAFF", "");
+
+-- Create the User table
+CREATE TABLE CoolBro.`User` (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    UserRoleID BIGINT,
+    Email VARCHAR(128),
+    Name VARCHAR(255),
+    Password VARCHAR(128),
+    Country_code VARCHAR(10),
+    Phone VARCHAR(20),
+    Otp INT,
+    Is_otp_verified BOOLEAN DEFAULT FALSE,
+    Otp_expiration_time TIMESTAMP,
+    Is_paid_user BOOLEAN DEFAULT FALSE,
+    Is_verified BOOLEAN DEFAULT FALSE,
+    Login_type VARCHAR(50),
+    AccessToken VARCHAR(1500),
+    DeviceToken VARCHAR(1500),
+     Is_deleted BOOLEAN DEFAULT FALSE,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (UserRoleID) REFERENCES UserRole(ID)
+);
+
+--Create user details table
+CREATE TABLE CoolBro.UserDetails (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    UserID BIGINT,
+    Company_name VARCHAR(100),
+    BusinessType VARCHAR(100),
+    NumberOfEmployees INT,
+    LegalStatus VARCHAR(100),
+    Description TEXT,
+    Contact_name VARCHAR(100),
+    Contact_email VARCHAR(100),
+    Contact_phone VARCHAR(20),
+    Year_of_establishment TIMESTAMP,
+    Gender VARCHAR(20),
+    Date_of_birth TIMESTAMP,
+    Date_of_anniversary TIMESTAMP,
+    Blood_group VARCHAR(20),
+    DefaultAddressID BIGINT,
+    UPI_id VARCHAR(100),
+    Latitude DECIMAL(10,8),
+    Longitude DECIMAL(10,8),
+    Is_kyc_verified BOOLEAN DEFAULT FALSE,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (UserID) REFERENCES User(ID)
+);
+
+CREATE TABLE CoolBro.BankAccountDetails (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    UserID BIGINT,
+    Account_holder_name VARCHAR(100),
+    Account_number VARCHAR(100),
+    Bank_name VARCHAR(100),
+    Branch VARCHAR(100),
+    IFSC_code VARCHAR(100),
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (UserID) REFERENCES User(ID)
+);
+
+CREATE TABLE CoolBro.BusinessDetails (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    UserID BIGINT,
+    GST_number VARCHAR(15),
+    PAN_number VARCHAR(10),
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (UserID) REFERENCES User(ID)
+);
+
+CREATE TABLE CoolBro.UserMedia (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    UserID BIGINT,
+    Media_url VARCHAR(255),
+    Media_type ENUM('image', 'video'),
+    Is_main_media BOOLEAN DEFAULT FALSE,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (UserID) REFERENCES User(ID)
+);
+
+CREATE TABLE CoolBro.KYCDocument (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    UserID BIGINT,
+    Document_type ENUM('address_proof', 'identity_proof', 'other_document'),
+    Document_data VARCHAR(500), -- This can be BLOB or VARCHAR, depending on your needs
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (UserID) REFERENCES User(ID)
+);
+
+-- Product details
+CREATE TABLE CoolBro.Product (
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    UserID BIGINT,
+    Name VARCHAR(100),
+    BrandID BIGINT,
+    CategoryID BIGINT,
+    EnergyEfficiencyRatingID BIGINT,
+    Model_number VARCHAR(100),
+    Model_series VARCHAR(100),
+    SKU_number VARCHAR(100),
+    Description TEXT,
+    Price DECIMAL(10, 2),
+    Sale_price DECIMAL(10, 2),
+    Is_price BOOLEAN DEFAULT FALSE,
+    Is_price_range BOOLEAN DEFAULT FALSE,
+    Min_price DECIMAL(10, 2),
+    Max_price DECIMAL(10, 2),
+    Meta_tag_title VARCHAR(100),
+    Meta_tag_description TEXT,
+    Meta_tag_keywords:DataTypes TEXT,
+    Quantity INT,
+    Status VARCHAR(20),
+    Cooling_capacity DECIMAL(5, 2),
+    Is_available BOOLEAN DEFAULT TRUE,
+    Is_featured BOOLEAN DEFAULT FALSE,
+    Is_new_arrival BOOLEAN DEFAULT FALSE,
+    Is_best_seller BOOLEAN DEFAULT FALSE,
+    Is_exclusive BOOLEAN DEFAULT FALSE
+    Is_wifi_enabled BOOLEAN DEFAULT FALSE,
+    Has_voice_control BOOLEAN DEFAULT FALSE,
+    Has_auto_cleaning BOOLEAN DEFAULT FALSE,
+    Has_dehumidification BOOLEAN DEFAULT FALSE,
+    Has_sleep_mode BOOLEAN DEFAULT FALSE,
+    Has_turbo_mode BOOLEAN DEFAULT FALSE,
+    Has_eco_mode BOOLEAN DEFAULT FALSE,
+    Noise_level_indoor VARCHAR(50),
+    Noise_level_outdoor VARCHAR(50),
+    Remote_control_type VARCHAR(50),
+    Warranty_period INT,
+    Cooling_technology VARCHAR(50),
+    Has_built_in_air_purifier BOOLEAN DEFAULT FALSE,
+    Has_anti_bacterial_filter BOOLEAN DEFAULT FALSE,
+    Has_dust_filter BOOLEAN DEFAULT FALSE,
+    Room_size_suitability VARCHAR(50),
+    Production_year INT,
+    Voltage DECIMAL(6, 2),
+    Wattage DECIMAL(6, 2),
+    Frequency DECIMAL(5, 2),
+    Refrigerant VARCHAR(50),
+    Condenser_coil VARCHAR(255),
+    Dimensions_indoor_width DECIMAL(6, 2),
+    Dimensions_indoor_height DECIMAL(6, 2),
+    Dimensions_indoor_depth DECIMAL(6, 2),
+    Indoor_unit_weight DECIMAL(6, 2),
+    Dimensions_outdoor_width DECIMAL(6, 2),
+    Dimensions_outdoor_height DECIMAL(6, 2),
+    Dimensions_outdoor_depth DECIMAL(6, 2),
+    Outdoor_unit_weight DECIMAL(6, 2),
+    Installation_type VARCHAR(50),
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (UserID) REFERENCES User(ID)
+);
+
+
+CREATE TABLE CoolBro.ProductMedia (
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    ProductID BIGINT,
+    Media_url VARCHAR(255),
+    Media_type VARCHAR(20),
+    Is_main_media BOOLEAN DEFAULT FALSE,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (ProductID) REFERENCES Product(ID)
+);
+
+CREATE TABLE CoolBro.Category (
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100),
+    Description TEXT,
+    Image_url VARCHAR(255),
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT
+);
+
+CREATE TABLE CoolBro.Brand (
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100),
+    Image_url VARCHAR(255),
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT
+);
+
+CREATE TABLE CoolBro.Variation (
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    ProductID BIGINT,
+    VariationID BIGINT,
+    Type VARCHAR(20),
+    Value VARCHAR(255),
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (ProductID) REFERENCES Product(ID)
+);
+
+CREATE TABLE CoolBro.EnergyEfficiencyRating (
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100),
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT
+);
+
+-- Insert dummy data into the Brand table
+INSERT INTO CoolBro.Brand (Name, Image_url, Created_by, Updated_by)
+VALUES
+  ('Samsung', 'samsung_logo.png', 1, 1),
+  ('LG', 'lg_logo.png', 1, 1),
+  ('Daikin', 'daikin_logo.png', 1, 1);
+
+-- Insert dummy data into the Category table
+INSERT INTO CoolBro.Category (Name, Description, Image_url, Created_by, Updated_by)
+VALUES
+  ('Split AC', 'Category for split air conditioners', 'split_ac.jpg', 1, 1),
+  ('Window AC', 'Category for window air conditioners', 'window_ac.jpg', 1, 1),
+  ('Portable AC', 'Category for portable air conditioners', 'portable_ac.jpg', 1, 1);
+
+-- Insert dummy data into the EnergyEfficiencyRating table
+INSERT INTO CoolBro.EnergyEfficiencyRating (Name, Created_by, Updated_by)
+VALUES
+  ('1-star', 1, 1),
+  ('2-star', 1, 1),
+  ('3-star', 1, 1),
+  ('4-star', 1, 1),
+  ('5-star', 1, 1),
+  ('Inverter', 1, 1);
+
+
+-- Insert dummy data into the Product table (Air Conditioners)
+INSERT INTO CoolBro.Product (UserID, Name, BrandID, CategoryID, EnergyEfficiencyRatingID, Model, SKU_number, Description, Price, Quantity, Status, Cooling_capacity, Is_available, Is_featured, Is_new_arrival, Is_best_seller, Color, Is_wifi_enabled, Has_voice_control, Has_auto_cleaning, Has_dehumidification, Has_sleep_mode, Has_turbo_mode, Has_eco_mode, Noise_level, Remote_control_type, Warranty_period, Cooling_technology, Has_built_in_air_purifier, Has_anti_bacterial_filter, Has_dust_filter, Room_size_suitability, Production_year, Voltage, Wattage, Frequency, Refrigerant, Condenser_coil, Dimensions_indoor_width, Dimensions_indoor_height, Dimensions_indoor_depth, Indoor_unit_weight, Dimensions_outdoor_width, Dimensions_outdoor_height, Dimensions_outdoor_depth, Outdoor_unit_weight, Created_by, Updated_by)
+VALUES
+  (1, 'Air Conditioner Model X', 1, 1, 1, 'Model X', 'ACX123', 'Powerful air conditioner', 699.99, 20, 'Published', 5.0, 1, 1, 0, 0, 'White', 1, 1, 1, 1, 1, 0, 1, 'Low', 'Smart remote', 3, 'Inverter compressor', 1, 1, 0, 'Large room', 2023, 230.00, 1800, 60, 'R410a', 'Aluminum', 100, 150, 35, 18, 110, 80, 50, 30, 1, 1),
+  (2, 'Air Conditioner Model Y', 2, 1, 2, 'Model Y', 'ACY456', 'Energy-efficient AC', 399.99, 10, 'Published', 3.2, 1, 0, 1, 1, 'Silver', 1, 0, 0, 1, 0, 1, 0, 'Moderate', 'Standard remote', 2, 'Conventional compressor', 0, 1, 0, 'Small room', 2022, 220.00, 1500, 50, 'R134a', 'Copper', 80, 120, 30, 15, 90, 65, 40, 20, 1, 1);
+
+
+
+CREATE TABLE CoolBro.Rating (
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    UserID BIGINT,
+    Rated_item_id BIGINT,
+    Rated_item_type VARCHAR(50),
+    Name VARCHAR(255),
+    Rating VARCHAR(50),
+    Review TEXT,
+    IsAnonymous BOOLEAN DEFAULT FALSE;
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT
+);
+
+CREATE TABLE CoolBro.RatingMedia (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    RatingID BIGINT,
+    Media_url VARCHAR(255),
+    Media_type ENUM('image', 'video'),
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (RatingID) REFERENCES Rating(ID)
+);
+
+CREATE TABLE CoolBro.Address (
+  ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+  UserID BIGINT,
+  Nick_name VARCHAR(100),
+  Company_name VARCHAR(100),
+  GST_number VARCHAR(15),
+  First_name VARCHAR(255),
+  Last_name VARCHAR(255),
+  Phone_number VARCHAR(20),
+  Phone_number_2 VARCHAR(20),
+  Address TEXT,
+  City VARCHAR(100),
+  State VARCHAR(100),
+  PostalCode VARCHAR(20),
+  Country VARCHAR(100),
+  Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  Created_by BIGINT,
+  Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  Updated_by BIGINT,
+  FOREIGN KEY (UserID) REFERENCES User(ID)
+) 
+
+CREATE TABLE CoolBro.Order (
+  ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+  UserID BIGINT,
+  DealerID BIGINT,
+  Invoice_number VARCHAR(100) NOT NULL UNIQUE,
+  Order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  Email VARCHAR(100),
+  BillingAddressID BIGINT,
+  ShippingAddressID BIGINT,
+  Is_delivered BOOLEAN DEFAULT FALSE,
+  Total_amount DECIMAL(10, 2),
+  Sub_total_amount DECIMAL(10, 2),
+  Shipping_charge DECIMAL(10, 2),
+  Discount_amount DECIMAL(10, 2),
+  Delivery_status ENUM('processing', 'shipped', 'delivered', 'cancel') DEFAULT 'processing',
+  Payment_status ENUM('pending', 'completed') DEFAULT 'pending',
+  Delivered_at DATETIME NOT NULL DEFAULT NOW(),
+  Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (UserID) REFERENCES User(ID)
+) 
+
+CREATE TABLE CoolBro.OrderItem (
+  ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+  OrderID BIGINT,
+  ProductID BIGINT,
+  Quantity INTEGER,
+  Color VARCHAR(50),
+  Price DECIMAL(10, 2),
+  Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) 
+
+CREATE TABLE CoolBro.Payment (
+  ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+  OrderID BIGINT,
+  Payment_method VARCHAR(100),
+  Amount DECIMAL(10, 2),
+  Transaction_id VARCHAR(100),
+  Payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) 
+
+CREATE TABLE CoolBro.ContactUs (
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100),
+    Email VARCHAR(100),
+    Subject VARCHAR(255),
+    Message TEXT,
+    Phone VARCHAR(20),
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  )
+
+  
+CREATE TABLE CoolBro.UserAirConditionService (
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    UserID BIGINT,
+    AC_name VARCHAR(255),
+    Media_url VARCHAR(255),
+    Purchase_date DATE,
+    Last_serviced_date DATE,
+    Next_serviced_date DATE,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (UserID) REFERENCES User(ID)
+  )
+
+ CREATE TABLE CoolBro.Cart (
+  ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+  UserID BIGINT,
+  ProductID BIGINT,
+  VariationID BIGINT,
+  Quantity INTEGER,
+  Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (UserID) REFERENCES CoolBro.User(ID)
+);
+
+ CREATE TABLE CoolBro.HomepageSections (
+  ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+  Section_name VARCHAR(255),
+  Display_name VARCHAR(255),
+  Status BOOLEAN DEFAULT FALSE,
+  Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
