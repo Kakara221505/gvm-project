@@ -1,0 +1,6 @@
+-- Drop all table if already exist
+DROP TABLE aitextdrip.User;
+DROP TABLE aitextdrip.UserRole;
+
+
+
