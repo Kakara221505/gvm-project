@@ -1,0 +1,185 @@
+######################### GVM Info ###################################
+######################## Email Skype Details ########################
+Email->vivek4gvm@gmail.com
+Pass ->vivek@gvm123
+garttqvuydtwixbm
+
+####################### Github Credential ##########################
+Username=>Vivek221505
+Username=>pooja4gvm@gmail.com
+Pass =>Kr!shana12
+##################### Zira Access #################################
+
+
+#################### VDB ACCESS #################################
+Username:-afalcon
+Password:-easylogin2022
+
+custom_attributes.action
+
+npm install -D tailwindcss postcss autoprefixer
+
+#####################Mongo details ###################
+1)Database access
+ username=>vk221505
+ password=>016881
+2)Collection details
+  Database Name->vivek
+  Collection name->vivekgvm
+3)particular application connection url 
+  url=>mongodb+srv://<username>:<password>@cluster0.gawge.mongodb.net/?retryWrites=true&w=majority
+
+#################### Sales Hive Details #######################
+Link=>     https://dev.saleshive.com/
+Username=> crush@saleshive.com
+pass=>     CRUSHgoals!!
+
+################## attendence login ##########################
+Username= vivek4gvm@gmail.com
+pass   = vivek@gvm123
+
+
+##############  Bit Bucket Access ########################
+Name=>Vivek Tripathi
+Email->vivek4gvm@gmail.com
+Pass=>Tiwari@016881
+Uniq Pass =>ATBB7QUvUzEnMLu3Gm25JM8FGTFx594EB70E
+Username=>Vk221505
+
+##############  Bit Bucket Access ########################
+Name=>Vivek Tripathi
+Email->vivek@gvmtechnologiescom
+Pass=>Tiwari@9839062159
+Uniq Pass =>ATBBdmB9dbgyCp2VVTfUkYfjJCENE8B2F6E8
+Username=>Vk016881
+
+#################Login Admin Party ####################3
+username:ketan4gvm@gmail.com
+
+password:krq72i1n
+
+admin@gmail.com,
+isadmin:true,
+password:test
+
+#### Any desk Pass #############
+anydesk id=661425726
+anydesk password=gvm@1234
+
+########## Gvm Filezill #############
+ip=>sftp://134.209.153.195
+username=root
+pass=gVm@2467@gvm
+port=22
+
+############ Party ##################
+Host: sftp://68.183.108.157
+Username: root
+Password: g@24678Vm
+
+######### putty command ##########
+1)pm2 list
+2)pm2 stop appname
+3)npm start
+4)pm2 start appname
+5)pm2 start index.js --name focusvisa_back
+
+https://dev.legalremitnepal.com.au/
+desktop@bibek.com
+Bibek@12345
+
+######################### Zoho Details ####################################
+client Id=> 1000.VR1TX4QJUPUJPT58SUI8CSE3ZT3TYD
+Client Secret=> dc15945be5bbd58b9ff8b5ebd5f14bef0c49c7cf9d
+token=>pat-na1-213082ca-d421-4378-84a3-e1283809e241
+
+
+################### google calender 4gvm####################
+key=>e83e31b395a3818da638bbe8c28f24dc67e843e3
+projectnumber=>739833894853
+calenderId=>5f25801a79f453fa3f1fd028060d0d246d774fa7897d6f4cbbad8d1931201aa6@group.calendar.google.com
+
+################### google calender tecnologies ############
+projectnumber=>1043954431968
+calenderId=>c_cc25645fc74ae25931512eda33ccb2e3151522272757abe91bb20e0b5d362dbc@group.calendar.google.com
+
+############## Client mail details #####################
+Email=> admin@focusvisa.com
+password=>Focus@work123
+app pwd=>WyuraxZP0eXA
+
+Email=> focusvisa.au@gmail.com 
+Password=> H26mJn!U6aFdFSj
+app pwd=>ddplcekplnryrpqx
+projectnumber=>357964193421
+CalenderId=>03b328e25e31e7a75d1275d3af5447bde8421bb91b5beba9bc5340e88abd3676@group.calendar.google.com
+
+################ databse access ####################
+Anydesk:426377166
+pass : Bhargav@123
+username - GVMAdmin
+password - g@V23m!!
+mongodb://GVMAdmin:g%40V23m%21%21@68.183.108.157:27017/?authSource=admin&readPreference=primary&directConnection=true&ssl=false
+
+####################### zoho maail #######################
+Email=>admin@focusvisa.com
+password=>Focus@work123
+
+####################### yahoo mail ################################
+email:bibek.8091@gmail.com
+password:Remit@123
+
+################### yahoo mail ###########################
+email:admin@focusvisa.com
+password:Focus@work123
+app password:mdqidoqppvajtjow
+
+
+###############  Alles Health Info #########################
+github url=>https://github.com/AllesHealth-Tech-Team/AllesHealth-backend-nodejs
+token =>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
+Database url hostname =>alles-health-dev-db.czekbw3dxobo.ap-south-1.rds.amazonaws.com
+username=>ahdbadmin
+password=>4OUXIlcDLD0XK7XxZ0W9
+
+
+############ Focus visa db ##################
+const mongoose = require('mongoose');
+const mongoUri = "mongodb://GVMAdmin:g%40V23m%21%21@68.183.108.157:27017/?authSource=admin&readPreference=primary&directConnection=true&ssl=false"
+
+const connectToMongo = ()=>{
+    mongoose
+  .connect(
+    "mongodb://GVMAdmin:g%40V23m!!@68.183.108.157:27017/?authMechanism=DEFAULT",
+    { dbName: "focus-visa" },
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  
+  .then(() => {
+    console.log("Connection successful");
+  })
+  .catch((e) => {
+    console.log(e);
+  });
+}
+
+module.exports=connectToMongo
+
+
+############### Cool Bro ##############################
+https://github.com/navneet0000/CoolBro-API
+
+
+important link
+https://dev.jnto.co/channels
+https://livesite-gvm.gvmtechnologies.com/dashboard
+https://drive.google.com/file/d/1SnTsa18lT06L66FH8Js0aWMWZLGa9j8O/view?usp=drive_link
+https://easyhrms.gvmtechnologies.com/authentication/sign-in
+
+
+
+
+
