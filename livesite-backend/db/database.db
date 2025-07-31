@@ -1,0 +1,283 @@
+-- Drop all table if already exist
+DROP TABLE live_site.User;
+DROP TABLE live_site.Organization;
+DROP TABLE live_site.OrganizationUserRelation;
+DROP TABLE live_site.BackgroundItems;
+DROP TABLE live_site.Page;
+DROP TABLE live_site.Project;
+DROP TABLE live_site.Layer;
+DROP TABLE live_site.Annotations;
+DROP TABLE live_site.Calender;
+DROP TABLE live_site.Category;
+DROP TABLE live_site.SubCategory;
+DROP TABLE live_site.Bob;
+DROP TABLE live_site.Filter;
+DROP TABLE live_site.Share;
+
+
+
+-- Create the User table
+CREATE TABLE live_site.`User` (
+    ID BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    First_name VARCHAR(255),
+    Last_name VARCHAR(255),
+    Email VARCHAR(128) UNIQUE,
+    Gender VARCHAR(50),
+    Date_of_birth DATE,
+    Password VARCHAR(128),
+    Phone VARCHAR(20),
+    Otp VARCHAR(10),
+    Is_verified BOOLEAN DEFAULT FALSE,
+    Is_paid_user BOOLEAN DEFAULT FALSE,
+    User_type ENUM('0', '1', '2') DEFAULT '2',
+    Login_type ENUM('0', '1', '2') DEFAULT '0',
+    Otp_expiration_time TIMESTAMP,
+    Is_deleted BOOLEAN DEFAULT FALSE,
+    Is_otp_verified BOOLEAN DEFAULT FALSE,
+    AccessToken VARCHAR(1500),
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+-- Create the Organization table
+CREATE TABLE live_site.`Organization` (
+    ID BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    UserID BIGINT,
+    Key_name VARCHAR(255) UNIQUE,
+    Organization_name VARCHAR(255) NOT NULL,
+    Profile_image_url VARCHAR(255),
+    Website VARCHAR(255),
+    Contact_person_name VARCHAR(100),
+    Address VARCHAR(255),
+    City VARCHAR(50),
+    State VARCHAR(50),
+    Postal_code VARCHAR(50),
+    Country VARCHAR(50),
+    Is_deleted BOOLEAN DEFAULT FALSE,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User(ID),
+);
+
+CREATE TABLE live_site.`OrganizationUserRelation` (
+    ID BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    OrganizationID BIGINT,
+    UserID BIGINT,
+    Is_deleted BOOLEAN DEFAULT FALSE,
+    Role ENUM('0', '1', '2') DEFAULT '1', -- Default value is 'MEMBER'
+    Is_approved BOOLEAN DEFAULT FALSE,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+);
+
+CREATE TABLE BackgroundItems (
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    UserID BIGINT,
+    ProjectID BIGINT,
+    PageID BIGINT,
+    Type ENUM('0', '1', '2'),
+    BackGroundColor VARCHAR(255),
+    Is_default BOOLEAN DEFAULT FALSE,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User(ID),
+    FOREIGN KEY (ProjectID) REFERENCES Project(ID)
+);
+
+CREATE TABLE live_site.Page(
+  ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    UserID BIGINT,
+    ProjectID BIGINT,
+    BackGroundItemsID BIGINT,
+    Name VARCHAR(100),
+    Page_order INT,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User(ID),
+    FOREIGN KEY (ProjectID) REFERENCES Project(ID)
+)
+
+-- Create the Project table
+CREATE TABLE `Project` (
+    `ID` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `UserID` BIGINT NOT NULL,
+    `Name` VARCHAR(100) NOT NULL,
+    `Description` TEXT NULL,
+    `Created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `Updated_at` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+     FOREIGN KEY (UserID) REFERENCES User(ID)
+);
+
+
+-- Create the Layer table
+CREATE TABLE live_site.`Layer` (
+    ID BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    UserID BIGINT UNSIGNED NOT NULL,
+    PageID BIGINT UNSIGNED NOT NULL,
+    Name VARCHAR(100) NOT NULL,
+    Group_Name VARCHAR(100) NOT NULL,
+    Layer_order INT NOT NULL,
+    IsLocked BOOLEAN DEFAULT FALSE,
+    IsGroup BOOLEAN DEFAULT FALSE,
+    IsVisible BOOLEAN DEFAULT TRUE,
+    FillColor VARCHAR(20),
+    StrokeColor VARCHAR(20),
+    StrokeWidth DECIMAL(10, 2),
+    Font_size DECIMAL(10, 2),
+    Font_family VARCHAR(50),
+    StrokeType VARCHAR(50),
+    Collapsed BOOLEAN DEFAULT TRUE,
+    AssignDate TIMESTAMP NULL,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+     Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User(ID),
+    FOREIGN KEY (PageID) REFERENCES Page(ID)
+);
+
+-- Create the Anootation table
+CREATE TABLE live_site.`Annotations` (
+    ID BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    UserID BIGINT UNSIGNED NOT NULL,
+    front_no_id VARCHAR(100) NOT NULL,
+    bob_no_id VARCHAR(100) NOT NULL,
+    parentSelectSpecialId VARCHAR(100),
+    isPasteSpecialParent BOOLEAN DEFAULT FALSE NOT NULL,
+    LayerID BIGINT UNSIGNED NOT NULL,
+    AssignDate TIMESTAMP NULL,
+    ParentAnnotationID VARCHAR(100),
+    Type VARCHAR(50),
+    Title VARCHAR(255),
+    Comment TEXT,
+    Coordinates TEXT,
+    StrokeColor VARCHAR(20),
+    StrokeWidth DECIMAL(10, 2),
+    AxisX DECIMAL(10, 2),
+    AxisY DECIMAL(10, 2),
+    Width DECIMAL(10, 2),
+    Height DECIMAL(10, 2),
+    Rotation DECIMAL(10, 2),
+    Opacity DECIMAL(10, 2),
+    Scale_width DECIMAL(10, 2),
+    Scale_height DECIMAL(10, 2),
+    Origin_X DECIMAL(10, 2),
+    Origin_Y DECIMAL(10, 2),
+    Font_weight DECIMAL(10, 2),
+    Font_height DECIMAL(10, 2),
+    Font_size DECIMAL(10, 2),
+    Font_family VARCHAR(50),
+    Font_color VARCHAR(20),
+    IsLocked BOOLEAN DEFAULT FALSE,
+    IsVisible BOOLEAN DEFAULT TRUE,
+    properties JSON,
+    Is_deleted BOOLEAN DEFAULT FALSE NOT NULL,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+     Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User(ID),
+    FOREIGN KEY (LayerID) REFERENCES Layer(ID)
+);
+
+-- Create the Calender table
+CREATE TABLE live_site.Calender (
+    ID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    UserID BIGINT,
+    PageID BIGINT,
+    BgID BIGINT,
+    Date DATETIME,
+    Notes TEXT,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+     Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User(ID),
+    FOREIGN KEY (PageID) REFERENCES Page(ID)
+);
+
+-- Create the Category table
+CREATE TABLE `Category` (
+    ID BIGINT NOT NULL AUTO_INCREMENT,
+    CategoryName TEXT NULL,
+    Created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`ID`)
+);
+
+-- Create the SubCategory table
+CREATE TABLE `SubCategory` (
+    ID BIGINT NOT NULL AUTO_INCREMENT,
+    CategoryID BIGINT NOT NULL,
+    SubCategoryName TEXT NULL,
+    Created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+     Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      FOREIGN KEY (CategoryID) REFERENCES Category(ID),
+    PRIMARY KEY (`ID`)
+);
+
+--Create the Bob table
+CREATE TABLE live_site.`Bob` (
+    ID BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    UserID BIGINT UNSIGNED NOT NULL,
+    bob_no_id VARCHAR(100) NOT NULL,
+    properties JSON,
+    CategoryID BIGINT UNSIGNED NOT NULL,
+    SubCategoryID BIGINT UNSIGNED NOT NULL,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+     Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User(ID),
+    FOREIGN KEY (CategoryID) REFERENCES Category(ID),
+    FOREIGN KEY (SubCategoryID) REFERENCES SubCategory(ID)
+);
+
+--Create the Filter table
+CREATE TABLE live_site.`Filter` (
+    ID BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    UserID BIGINT UNSIGNED NOT NULL,
+    Name VARCHAR(100) NOT NULL,
+    Filter JSON,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    Updated_at TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User(ID)
+);
+
+-- Create the Share table
+CREATE TABLE live_site.`Share` (
+    ID BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    UserID BIGINT UNSIGNED NOT NULL,
+    ProjectID BIGINT UNSIGNED NOT NULL,
+    User_access JSON,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+     Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User(ID),
+    FOREIGN KEY (ProjectID) REFERENCES Project(ID)
+);
+
+
+-- Create the Privacy table
+CREATE TABLE `live_site.Privacy` (
+    `ID` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Policy` TEXT NOT NULL,
+    `Created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `Updated_at` DATETIME NULL,
+    PRIMARY KEY (`ID`)
+);
+
+
+
+
+-- Create the Terms table
+CREATE TABLE `live_site.TermsAndCondition` (
+    `ID` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `TermsCondition` TEXT NOT NULL,
+    `Created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `Updated_at` DATETIME NULL,
+    PRIMARY KEY (`ID`)
+);
+
+
+
+-- Create the Contact table
+
+CREATE TABLE `Contact` (
+    `ID` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Policy` TEXT NOT NULL,
+    `Created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `Updated_at` DATETIME NULL,
+    PRIMARY KEY (`ID`)
+);
+

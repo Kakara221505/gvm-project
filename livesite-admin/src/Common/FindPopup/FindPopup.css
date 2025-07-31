@@ -1,0 +1,11 @@
+/* For non-active tabs */
+.custom-tab .nav-item .nav-link {
+    color: #000; /* Set non-active tab color */
+}
+
+/* For active tabs */
+.custom-tab .nav-item .nav-link.active {
+    border-bottom: 2px solid #007bff; /* Customize active tab border */
+    color: #007bff; /* Optional: Change the active tab color */
+    border-radius: 0 !important;
+}

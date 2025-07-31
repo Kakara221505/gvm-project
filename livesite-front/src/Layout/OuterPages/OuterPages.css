@@ -1,0 +1,115 @@
+
+.sideline {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+	color:#ccc;
+}
+
+.sideline:before,
+.sideline:after {
+    content: '';
+    border-top: 1px solid #ebebeb;
+    margin: 0 20px 0 0;
+    flex: 1 0 20px;
+}
+
+.sideline:after {
+    margin: 0 0 0 20px;
+}
+
+.bgSideVectorContact{
+    background-image: url(../../Assets/Images/contactusVector.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 2rem;
+    padding-top: 0;
+    height: 100%;
+    /* background-color: #eee; */
+  }
+  
+  .container1 {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1rem;
+    background-color: #fff;
+    /* width: 768px; */
+    /* max-height: 70vh; */
+    height: 100%;
+    max-height: 90%;
+    border-radius: 0.25rem;
+    box-shadow: 0rem 1rem 2rem -0.25rem rgba(0, 0, 0, 0.25);
+  }
+  .container__heading {
+    padding: 1rem 0;
+    /* border-bottom: 1px solid #ccc; */
+    text-align: center;
+  }
+  .container__heading > h2 {
+    font-size: 1.75rem;
+    line-height: 1.75rem;
+    margin: 0;
+  }
+  .container__content {
+    flex-grow: 1;
+    overflow-y: scroll;
+    text-align: start;
+    font-size: 15px;
+  }
+  .container__nav {
+    border-top: 1px solid #ccc;
+    text-align: right;
+    padding: 2rem 0 1rem;
+  }
+  .container__nav > .button {
+    background-color: #2244FF;
+    box-shadow: 0rem 0.5rem 1rem -0.125rem rgba(0, 0, 0, 0.25);
+    padding: 0.8rem 2rem;
+    border-radius: 0.5rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .container__nav > .button:hover {
+    box-shadow: 0rem 0rem 1rem -0.125rem rgba(0, 0, 0, 0.25);
+    transform: translateY(-0.5rem);
+  }
+  .container__nav > small {
+    color: #777;
+    margin-right: 1rem;
+  }
+
+  /* Custom scrollbar styles */
+.custom-scrollbar {
+    max-height: 700px; /* Adjust as needed */
+    overflow-y: auto;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #2244FF; /* Blue color */
+    border-radius: 10px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #2244FF; /* Darker blue on hover */
+  }
+  

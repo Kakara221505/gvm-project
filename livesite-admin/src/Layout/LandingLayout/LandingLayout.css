@@ -1,0 +1,127 @@
+/* LandingLayout.css */
+.notificationSectionIcon {
+  background: var(--bg-secondary);
+  width: 40px;
+  max-width: 40px;
+  height: 40px;
+  max-height: 40px;
+  border-radius: 50% !important;
+}
+.setFileBackGround {
+  background-color: transparent !important;
+  font-weight: 500;
+}
+#file-drp-menu {
+  width: 100vh;
+  max-width: 25vh;
+  margin-top: 12px;
+  background-color: var(--primary-sidebar);
+}
+
+
+.ItemFile {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.notificationSectionIcon:hover {
+  background: var(--bg-secondary);
+}
+.borderAvatar {
+  border: 1px solid var(--primary-btn);
+  border-radius: 50% !important;
+}
+.loginBtn1 {
+  background: var(--primary-btn) !important;
+  color: var(--bg-navbar) !important;
+  /* width: 80px; */
+}
+.avatarText {
+  color: #807e81;
+  font-size: 12px;
+}
+
+.sidebar-open .main {
+  margin-left: 0; /* Adjusted margin when sidebar is open */
+}
+
+.sidebar.open {
+  width: 0;
+  padding: 0 !important;
+}
+
+.dropdown-container {
+  display: none;
+}
+
+.menuTextHeader {
+  color: var(--text-primary) !important;
+}
+
+.sidebar a:hover:not(.active),
+.dropdown-btn:hover {
+  /* background-color: #f2f3f4; */
+  /* color: black; */
+  border-radius: 12px;
+  margin: 12px 0px 12px 0px;
+}
+
+/* MEDIA QUERY STARTS */
+@media screen and (max-width: 500px) {
+  .main {
+    margin-left: 0px;
+  }
+
+  .sidebar {
+    position: relative;
+    width: auto;
+    overflow: hidden;
+  }
+
+  .sidebar a {
+    width: auto;
+  }
+  .sidebar a:not(:first-child) {
+    display: none;
+  }
+  .dropdown-btn {
+    display: none;
+  }
+
+  .sidebar a.icon {
+    color: white;
+    float: right;
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+  }
+  .sidebar.responsive {
+    position: fixed;
+    width: 100%;
+    overflow: auto;
+  }
+  .sidebar.responsive .icon {
+    position: absolute;
+    font-size: 13px;
+    right: 0;
+    top: 0;
+  }
+
+  .sidebar.responsive a,
+  .sidebar.responsive .dropdown-btn {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .sidebar.responsive .dropdown-container {
+    display: none;
+  }
+  .main {
+    margin-left: 0;
+  }
+}
+/* MEDIA QUERY ENDS */
+
+.dropdown-item:focus, .dropdown-item:hover{
+  background-color: var(--bg-secondary) !important;
+}

@@ -1,0 +1,25 @@
+.counterBtn{
+    background: var(--form-shade) !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+.counterBtn:hover{
+    background: var(--form-shade) !important;
+}
+
+.counterBtn1:hover{
+    background: var(--form-shade) !important;
+}
+.counterBtn1{
+    background: var(--form-shade) !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+.incrText:focus{
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+}
+
+

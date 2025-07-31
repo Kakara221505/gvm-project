@@ -1,0 +1,14 @@
+/* CustomModal.css */
+.custom-modal-dialog {
+    z-index: 22 !important;
+  }
+  .custom-modal {
+    z-index: 9999;
+    /* Additional styles for the modal */
+  }
+  
+.pdf-preview-image {
+
+  display: block;
+  margin: 0 auto;
+}

@@ -1,0 +1,79 @@
+/* Styles for collapsed accordion */
+.accItem .accordion-button.collapsed {
+  border-radius: 12px 12px 0px 0px !important;
+  color: #000 !important; /* Change text color to black when collapsed */
+}
+
+.accItem .accordion-button.collapsed .openHeaderImg {
+  filter: brightness(0.5);
+}
+
+.filImg{
+  filter: var(--image-filterdk) !important;
+}
+
+.filImgICO{
+  filter: var(--image-filterICO) !important;
+}
+
+.accItem .bodyLayer {
+  background: #ebf3ff;
+  border-radius: 0px 0px 12px 12px;
+  height: 100vh;
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+.layerContainer{
+  height: 100vh;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+}
+
+.accItem .accordion-button.collapsed .propertyTextLabel1 {
+  color: var(--text-primary) !important; /* Adjust label color when accordion is collapsed */
+}
+.accItem .filImg .accordion-button:not(.collapsed){
+  filter: var(--image-filter) !important;
+}
+.fillImg1{
+  filter: var(--image-filter) !important;
+}
+
+.propertyTextLabel1 {
+  display: block;
+  color: var(--bg-navbar);
+}
+
+/* Styles for expanded accordion */
+.accItem .accordion-button:not(.collapsed) {
+  border-radius: 12px 12px 0px 0px !important;
+  background: var(--primary-btn) !important;
+  color: var(--text-primary) !important; /* Change text color to white when expanded */
+}
+
+.accItem .accordion-button:not(.collapsed) .openHeaderImg {
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+/* Adjust label color for dark theme */
+.dark-theme .propertyTextLabel1 {
+  color: #000 !important;
+}
+
+.layerText {
+  color: var(--text-secondary);
+}
+
+.filterBTN.active {
+  background-color: #007bff !important; /* Example active background color */
+  border-color: #007bff; /* Example active border color */
+}
+
+/* .customsvg{
+  filter: brightness(0.5);
+}
+
+svg.actives.customsvg{
+  filter: invert(1);
+} */

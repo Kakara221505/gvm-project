@@ -1,0 +1,6 @@
+-- Drop all table if already exist
+DROP TABLE instacart.User;
+DROP TABLE instacart.UserRole;
+
+
+

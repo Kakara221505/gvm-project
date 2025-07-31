@@ -1,0 +1,234 @@
+/* Dark Light Theme Variables */
+.link-no-underline {
+  text-decoration: none !important; /* Remove underline */
+  color: inherit !important; /* Inherit the color from the parent */
+}
+:root {
+
+  --toolFil-light:invert(1);
+  --toolFil-dark:invert(1);
+
+  --primary-btn-light: #2244ff;
+  --primary-btn-dark: #FFCC00;
+
+
+  --primary-sidebar-light:#FFFDFF;
+  --primary-sidebar-dark:#131213;
+
+  --checkBox-light:#ccc;
+  --checkBox-dark:#131213;
+
+
+  --image-filter-light:none;
+  --image-filter-dark:invert(1);
+
+  --image-filterdk-light:invert(1);;
+  --image-filterdk-dark:none;
+
+  --image-filterICO-light:none;;
+  --image-filterICO-dark:invert(1);
+
+
+  --form-shade-light:#f3f3f5;
+  --form-shade-dark:#454445;
+
+  --text-primary-light: black;
+  --text-primary-dark: white;
+
+  --acc-bg-light:transparent;
+  --acc-bg-dark:black;
+
+  --text-secondary-light: #242424;
+  --text-secondary-dark: #ffcc00;
+
+  --bg-primary-light: black;
+  --bg-primary-dark: white;
+
+  --bg-secondary-light: #f2f3f4;
+  --bg-secondary-dark: #ffcc00;
+
+  --bg-navbar-light: #fffdff;
+  --bg-navbar-dark: #362c2c;
+
+  --bg-sidebar-active-light:#F2F3F4;
+  --bg-sidebar-active-dark:#4444;
+
+  --bg-border-light: #d7d7d7;
+  --bg-border-dark: #fff;
+
+  --bg-main-light: #f4f5f4;
+  --bg-main-dark: #1c1d1d;
+}
+
+.light-theme {
+  --toolFil:var(--toolFil-light);
+  --primary-sidebar:var(--primary-sidebar-light);
+    --image-filterdk:var(--image-filterdk-light);
+    --checkBox:var(--checkBox-light);
+    --image-filterICO:var(--image-filterICO-light);
+
+  --image-filter:var(--image-filter-light);
+  --acc-bg:var(--acc-bg-light);
+    --form-shade:var(--form-shade-light);
+  --text-primary: var(--text-primary-light);
+  --text-secondary: var(--text-secondary-light);
+  --bg-primary: var(--bg-primary-light);
+  --bg-secondary: var(--bg-secondary-light);
+  --bg-navbar: var(--bg-navbar-light);
+  --bg-border: var(--bg-border-light);
+  --bg-main: var(--bg-main-light);
+  --bg-sidebar-active: var(--bg-sidebar-active-light);
+  --primary-btn:var(--primary-btn-light)
+}
+
+.dark-theme {
+  --toolFil:var(--toolFil-dark);
+  --primary-sidebar:var(--primary-sidebar-dark);
+  --image-filterdk:var(--image-filterdk-dark);
+  --checkBox:var(--checkBox-dark);
+  --image-filterICO:var(--image-filterICO-dark);
+  --image-filter:var(--image-filter-dark);
+  --acc-bg:var(--acc-bg-dark);
+  --form-shade:var(--form-shade-dark);
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --bg-primary: var(--bg-primary-dark);
+  --bg-secondary: var(--bg-secondary-dark);
+  --bg-navbar: var(--bg-navbar-dark);
+  --bg-border: var(--bg-border-dark);
+  --bg-main: var(--bg-main-dark);
+  --bg-sidebar-active: var(--bg-sidebar-active-dark);
+  --primary-btn:var(--primary-btn-dark)
+}
+
+/* Main Css Starts From Below */
+
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* Use color variables throughout your styles */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff; /* Default to light theme background */
+  color: #000; /* Default to light theme text color */
+}
+
+/* COMMON UTILITY CLASS HTML COMPONENTS */
+button {
+  border-radius: 10px !important;
+  font-weight: 400;
+  background-color: #fffdff; /* Default to light theme primary color */
+  color: #000; /* Default to light theme text color */
+}
+
+.btn-primary {
+  background: var(--primary-btn-light) !important;
+  color: var(--text-primary-dark);
+  border: 0;
+}
+
+.form-select:focus {
+  box-shadow: none;
+  border-color: 0;
+}
+.lightText {
+  color: var(--text-primary) !important;
+}
+.modal-content {
+  border-radius: 12px;
+}
+
+.header {
+  text-align: center;
+  background-color: var(--primary-sidebar);
+  border-bottom: 1px solid var(--bg-border);
+  padding: 8px;
+  font-size: 30px;
+}
+
+.logoText {
+  font-family: "Lily Script One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  color: #000;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  background-color: var(--primary-sidebar);
+  position: fixed;
+  height: 100%;
+  max-height: -webkit-fill-available;
+  z-index: 1;
+  overflow: auto;
+  transition: 0.5s;
+}
+
+.cardCustom {
+  border-radius: 12px;
+  border: 0;
+  background-color: #fff;
+}
+
+.sidebar a {
+  display: block;
+  color: var(--text-secondary);
+  width: 100%;
+  margin: 12px 0px 12px 0px;
+  padding: 12px 12px 12px 12px;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: left;
+  border: none;
+  text-decoration: none;
+  outline: none;
+  font-weight: 500 !important;
+}
+
+.sidebar a.active {
+  background-color: var(--bg-sidebar-active);
+  color: var(--text-secondary);
+  border-radius: 12px;
+}
+
+.main {
+  background-color: var(--bg-main);
+  margin-left: 300px;
+  font-size: 20px;
+  padding: 20px;
+  transition: margin-left 0.5s ease;
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.modal-custom {
+  background-color: #fffdff;
+}
+
+.yellowText{
+  color: var(--text-secondary);
+}
+
+.commonModalBg{
+  background: var(--primary-sidebar) !important;
+}
+
+.loginTextColor1{
+  color: var(--primary-btn) !important;
+}
+
+.copyTextBrder{
+  border: 1px solid var(--primary-btn);
+  color: var(--primary-btn);
+}
