@@ -1,0 +1,45 @@
+-- Drop all table if already exist
+DROP TABLE HRMS_GVM.User;
+DROP TABLE HRMS_GVM.UserRole;
+
+
+-- Create the UserRole table
+CREATE TABLE HRMS_GVM.UserRole (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(20),
+    Description TEXT,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT
+);
+
+--Insert default role
+INSERT INTO `HRMS_GVM`.`UserRole`(`Name`, `Description`)
+VALUES("ADMIN", ""),("USER", ""),("SUPERADMIN", ""),("DISTRIBUTOR", ""),("DEALER", ""),("STAFF", "");
+
+-- Create the User table
+CREATE TABLE HRMS_GVM.`User` (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    UserRoleID BIGINT,
+    Email VARCHAR(128),
+    Name VARCHAR(255),
+    Password VARCHAR(128),
+    Country_code VARCHAR(10),
+    Phone VARCHAR(20),
+    Otp INT,
+    Is_otp_verified BOOLEAN DEFAULT FALSE,
+    Otp_expiration_time TIMESTAMP,
+    Is_paid_user BOOLEAN DEFAULT FALSE,
+    Is_verified BOOLEAN DEFAULT FALSE,
+    Login_type VARCHAR(50),
+    AccessToken VARCHAR(1500),
+    DeviceToken VARCHAR(1500),
+     Is_deleted BOOLEAN DEFAULT FALSE,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Created_by BIGINT,
+    Updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Updated_by BIGINT,
+    FOREIGN KEY (UserRoleID) REFERENCES UserRole(ID)
+);
+

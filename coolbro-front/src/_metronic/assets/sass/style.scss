@@ -1,0 +1,989 @@
+//
+// Theme style
+//
+
+// Initialize
+@import 'init';
+
+// Components
+@import './core/components/components';
+@import 'components/components';
+
+// Layout
+@import './core/layout/base/layout';
+@import 'layout/layout';
+
+// Common Classes For Margins Paddings
+
+.marginPageMY {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.commonMobilePX {
+  padding-left: 40px;
+  padding-right: 20px;
+}
+
+.justifyText {
+  text-align: justify !important;
+}
+
+.uppercaseText {
+  text-transform: uppercase !important;
+}
+
+// Common Color Classes Theme
+
+.primaryBG {
+  background: #262262 !important;
+}
+
+.childHeaderBG {
+  background: #262262de !important;
+}
+
+// Custom Input css
+
+.customInput {
+  border: 1px solid #7c757e !important;
+  border-radius: 12px !important;
+  padding: 15px 15px 15px 15px !important;
+}
+
+.customInput::-webkit-inner-spin-button,
+.customInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.customInput {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+// Common Color Classes For Button
+
+.primaryBtn {
+  background: #262262 !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-size: 15px;
+}
+
+.primaryOutlineBtn {
+  border: 1px solid #262262 !important;
+  color: #262262 !important;
+  border-radius: 12px !important;
+  font-size: 15px;
+}
+
+// Common Color Classes For Text
+
+.primaryTextBold {
+  color: #262262 !important;
+  font-weight: 700 !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.primaryTextSemiBold {
+  color: #262262 !important;
+  font-weight: 600 !important;
+}
+
+.primaryTextMediumBold {
+  color: #262262 !important;
+  font-weight: 500 !important;
+}
+
+.primaryTextMedium {
+  color: #262262 !important;
+  font-weight: 400 !important;
+}
+
+.secondaryText {
+  color: #99a1b7;
+}
+
+.cellText {
+  color: #4B77BE !important;
+}
+
+.dangerText {
+  color: #ff4842 !important;
+}
+
+.secondary2Text {
+  color: #404f66 !important;
+}
+
+.secondary3Text {
+  color: #808080 !important;
+}
+
+// For Floating Label CSS
+.form-control:focus {
+  border: 2px solid #262262 !important;
+}
+
+.has-float-label {
+  position: relative;
+  font-size: 70%;
+}
+
+.has-float-label label {
+  position: absolute;
+  opacity: 1;
+  transition: all 0.2s;
+  top: -1.6em;
+  left: 1.1em;
+  z-index: 0;
+  line-height: 3.3;
+  padding: 0 1px;
+  // background: #fff;
+  color: #262262;
+  font-size: 12px;
+  height: 40px;
+  font-weight: 400 !important;
+}
+
+.has-float-label label::after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  background: #fff;
+  height: 6px;
+  top: 54%;
+  left: -0.2em;
+  right: -0.2em;
+  z-index: -1;
+}
+
+.has-float-label .form-control:placeholder-shown:not(:focus)::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.has-float-label .form-control:placeholder-shown:not(:focus)+label {
+  font-size: 150%;
+  opacity: 0.5;
+  top: 0.3em;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group label {
+  position: absolute;
+  left: 12px;
+  top: 18px;
+  font-size: 14px;
+  color: #777;
+  width: max-content;
+  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #262262;
+  outline: none;
+}
+
+.form-group input:focus+label,
+.form-group input:not(:placeholder-shown)+label {
+  top: -6px;
+  font-size: 12px;
+  color: #262262;
+  background-color: #ffffff;
+  padding: 0 4px;
+  border-radius: 4px;
+  left: 8px;
+}
+
+.form-group textarea:focus {
+  border-color: #262262;
+  outline: none;
+}
+
+.form-group textarea:focus+label,
+.form-group textarea:not(:placeholder-shown)+label {
+  top: -6px;
+  font-size: 12px;
+  color: #262262;
+  background-color: #ffffff;
+  padding: 0 4px;
+  border-radius: 4px;
+  left: 8px;
+}
+
+.form-group label {
+  margin-bottom: 0 !important;
+}
+
+.form-label {
+  margin-bottom: 0 !important;
+}
+
+
+/* Add this CSS to style the floating label */
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  transform: translateY(-0.25rem);
+  /* Adjust this value based on your design */
+  transition: transform 0.2s ease-in-out;
+}
+
+.has-value .floating-label {
+  transform: translateY(0);
+}
+
+.flatpickr-input {
+  border: 1px solid #7c757e !important;
+  border-radius: 12px !important;
+  padding: 15px 15px 15px 15px !important;
+}
+
+
+// Extra Additional Classes
+.ACImageCommon {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.customSearchInp:focus {
+  outline: none !important;
+  border: none !important;
+}
+
+.rateImageDiv1 {
+  position: relative;
+}
+
+.ratingMainDiv1 {
+  display: flex;
+  border-radius: 3px;
+  background: #ffa41c;
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  padding: 4px;
+  height: 30px;
+  width: 60px !important;
+  justify-content: center;
+}
+
+/* Target autofilled input fields in WebKit browsers */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* Remove box shadow */
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+
+  /* Set background color to transparent or none */
+  background-color: transparent !important;
+  /* You can also use "none" here */
+}
+
+// Extra Classes
+
+.page-link.active,
+.activePageStyle>.page-link {
+  background: #262262;
+  /* Set the desired background color for the active page */
+  color: #fff;
+}
+
+.page-item .page-link {
+  height: 3.3rem;
+  min-width: 3.5rem;
+  border-radius: 4px;
+}
+
+.logoResMobile {
+  filter: drop-shadow(0px 0px 2px black);
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  margin: auto;
+}
+
+.slick-dots {
+  bottom: -35px;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.addressDetailsMainResp {
+  display: flex;
+  align-items: center;
+}
+
+.is-valid1 {
+  background-image: none;
+  /* Remove background image, if that's used for the tick icon */
+}
+
+.is-invalid1 {
+  background-image: none;
+  /* Remove background image, if that's used for the tick icon */
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  height: 45px !important;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  font-size: 15px !important;
+}
+
+.offcanvas.offcanvas-end {
+  width: 300px !important;
+}
+
+.dropdown-toggle::after {
+  margin-left: 0.555em;
+}
+
+
+
+/* Add a new style for the sticky header */
+.custom-header {
+  top: -150px;
+  transition: all 0.5s ease;
+}
+
+.stickyHeader {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  transition: all 0.5s ease;
+  /* Adjust the transition duration as needed */
+  z-index: 1000;
+}
+
+.slick-prev {
+  left: -17px;
+}
+
+.slick-next {
+  right: -19px;
+}
+
+/* ... your existing styles ... */
+
+// Media Queries For Responsive
+
+
+@media screen and (max-width: 1300px) {
+
+  .fontCall {
+    font-size: 11px;
+    word-break: break-all;
+  }
+
+  .fontCall2 {
+    font-size: 13px;
+    word-break: break-all;
+  }
+
+  .dealerDetailsFont {
+    font-size: 16px;
+  }
+
+  .deskPaddingNone {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .footer-menu li a {
+    font-size: 13px !important;
+    color: #fff;
+  }
+
+  .footer-menu li {
+    margin-left: 12px !important;
+  }
+
+  .copyright-text p {
+    font-size: 13px !important;
+  }
+
+  .footer-text p {
+    font-size: 13px !important;
+  }
+
+  .cta-text span {
+    font-size: 14px !important;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .usefulLink {
+    padding-top: 2rem;
+    padding-left: 1rem !important;
+  }
+
+  .subScribe {
+    padding-top: 2rem;
+    padding-right: 1rem !important;
+  }
+
+  .single-cta i {
+    margin-top: 0 !important;
+  }
+
+  .footer-menu li a {
+    font-size: 12px;
+  }
+
+  .ipadCenterProdDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ipadStartProdDetailsText {
+    text-align: start !important;
+  }
+
+  .profileMarginBottom {
+    margin-bottom: 20px !important;
+  }
+
+  .customNavpills.mx-7.nav.nav-pills {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    padding-bottom: 15px;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 1rem;
+    /* Adjust the padding as needed */
+    width: 100%;
+    /* Ensure the container takes up the available width */
+  }
+
+  .navItem.nav-item {
+    scroll-snap-align: start;
+    flex: 0 0 calc(30% - 0.5rem);
+    /* Display 2 items per view with some spacing */
+    margin-right: 1rem;
+    /* Adjust the margin as needed */
+  }
+
+  .downloadAppImage {
+    width: 25%;
+  }
+
+  .ratingMainDiv {
+    right: 15% !important;
+  }
+
+  .marginPagePXMobile {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .justifyContentMobileBetween {
+    justify-content: space-between !important;
+  }
+
+  .dFLexAlignItemsCenterMobile {
+    display: flex;
+    align-items: center;
+  }
+
+  .marginTopProfile {
+    margin-top: 15px;
+  }
+
+  .dFLexAlignItemsBaselineMobile {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .contentAround {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .contentCenter {
+    display: flex;
+    justify-content: center;
+  }
+
+  .textAlignCenterMobile {
+    text-align: center !important;
+  }
+
+  // .cartCounterMain {
+  //   filter: brightness(0.5);
+  // }
+
+  .ipadDisplayNone {
+    display: none !important;
+  }
+
+  .justifyContentMobileBetween {
+    justify-content: space-between !important;
+  }
+
+  .centerTextMobile {
+    text-align: center !important;
+  }
+
+  .mobilePaddingNone {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .mobileImageResponsive {
+    width: 100% !important;
+  }
+
+  .mobileImageResponsiveMax {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .marginTopMobile {
+    margin-top: 0 !important;
+  }
+
+  .marginBottomMobile {
+    margin-bottom: 0 !important;
+  }
+
+  .mobileFlexColumn {
+    flex-direction: column !important;
+  }
+
+
+  .mobileWFull {
+    width: 100% !important;
+  }
+
+  .mobileDisplayNone {
+    display: none !important;
+  }
+
+  .marginPageMYMobile {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .responsiveFontLargeHeading {
+    font-size: 22px !important;
+  }
+
+  .responsiveFontMediumHeading {
+    font-size: 20px !important;
+  }
+
+  .responsiveFontSmallHeading {
+    font-size: 16px !important;
+  }
+
+  .zza {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .mobileMarginNone {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .contactPadding {
+    padding-top: 25px !important;
+  }
+}
+
+@media (min-width:330px) and (max-width:600px) {
+
+  .dealerDetailsFlexCol {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .respoTextReview {
+
+    font-size: 11px;
+  }
+
+  .respoTextReview1 {
+    font-size: 17px;
+
+  }
+
+  .mobileFlexColumnProfile {
+    flex-direction: column !important;
+  }
+
+  .marginBottomContact {
+    margin-bottom: 15px !important;
+  }
+
+  .contactPadding {
+    padding-top: 25px !important;
+  }
+
+  .profileFlexColumn {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-toggle3::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    filter: invert(1);
+  }
+
+  .logoutFilter {
+    filter: brightness(2) !important;
+  }
+
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .listMobileRespo {
+    flex-wrap: wrap;
+    justify-content: space-evenly !important;
+  }
+
+  #kt_signup_form {
+    margin-top: 130%;
+
+  }
+
+  #kt_login_signin_form {
+    margin-top: 50%;
+  }
+
+  .contactFindMail {
+    padding-top: 2rem;
+    padding-left: 1rem !important;
+  }
+
+  .usefulLink {
+    padding-top: 2rem;
+    padding-left: 1rem !important;
+  }
+
+  .subScribe {
+    padding-top: 2rem;
+    padding-right: 1rem !important;
+  }
+
+  .single-cta i {
+    margin-top: 0 !important;
+  }
+
+
+  .mobilePaddingNew {
+    padding-right: 2rem !important;
+    padding-left: 2rem !important;
+  }
+
+  .profileTextFieldBottomMargin {
+    margin-bottom: 20px !important;
+  }
+
+  .advancedPanelFontSize {
+    font-size: 12px !important;
+  }
+
+  .respoPriceText1 {
+    font-size: 15px;
+  }
+
+  .respoPriceText2 {
+    font-size: 13px;
+  }
+
+  .primaryBGMobile {
+    background-color: #262262 !important;
+  }
+
+  .addAlignStart {
+    display: flex;
+    align-items: baseline !important;
+  }
+
+  .productName {
+    font-size: 13px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60px;
+  }
+
+  .viewChildTitle {
+    font-size: 13px;
+  }
+
+  .customMyOrderListAction {
+    padding: 10px 4px 10px 4px !important;
+  }
+
+  .customNavpills.mx-7.nav.nav-pills {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    padding-bottom: 15px;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 1rem;
+    /* Adjust the padding as needed */
+    width: 100%;
+    /* Ensure the container takes up the available width */
+  }
+
+  .navItem.nav-item {
+    scroll-snap-align: start;
+    flex: 0 0 calc(50% - 0.5rem);
+    /* Display 2 items per view with some spacing */
+    margin-right: 1rem;
+    /* Adjust the margin as needed */
+  }
+
+  .downloadFlexCol {
+    flex-direction: column;
+  }
+
+  .addressDetailsMainResp {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+  }
+
+  .carousel-indicators {
+    bottom: -8px !important;
+  }
+
+  .carousel-indicators .active {
+    width: 5px !important;
+    height: 5px !important;
+  }
+
+  .carousel-indicators [data-bs-target] {
+    width: 5px !important;
+    height: 5px !important;
+  }
+
+  .carousel-caption {
+    display: none;
+  }
+
+  .shopRespMediaBtn {
+    z-index: 999;
+    padding: 5px !important;
+    margin-top: 8px !important;
+  }
+
+  .shopRespMedia {
+    font-size: 8px !important;
+  }
+
+  .bolderHeadingMain {
+    font-size: 15px !important;
+  }
+
+  .bolderHeadingChild {
+    font-size: 8px !important;
+  }
+
+  .ratingMainDiv {
+    right: 15%;
+  }
+
+  .has-float-label label::after {
+    height: 10px;
+    top: 50%;
+  }
+
+  .dFLexAlignItemsCenterMobile {
+    display: flex;
+    align-items: center;
+  }
+
+  .contentAround {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .contentCenter {
+    display: flex;
+    justify-content: center !important;
+  }
+
+  .textAlignCenterMobile {
+    text-align: center !important;
+  }
+
+  .flex-column-fluid1 {
+    flex: 1 0 auto;
+  }
+
+  .commonMobilePX {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+
+  .addressResp {
+    margin-top: 8px;
+  }
+
+  .mobilePaddingNone {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .marginPagePXMobile {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .paddingPagePXMobile {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .mobileMarginNone {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .mobileMargin {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+
+  .justifyContentMobileBetween {
+    justify-content: space-between !important;
+  }
+
+  .mobileImageResponsive {
+    width: 100% !important;
+  }
+
+  .marginTopMobile {
+    margin-top: 0 !important;
+  }
+
+  .marginBottomMobile {
+    margin-bottom: 0 !important;
+  }
+
+  .mobileFlexColumn {
+    flex-direction: column !important;
+  }
+
+  .mobileWFull {
+    width: 100% !important;
+  }
+
+  .mobileDisplayNone {
+    display: none !important;
+  }
+
+  .navbarMarginForSearch {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .marginPageMYMobile {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .responsiveFontLargeHeading {
+    font-size: 20px !important;
+  }
+
+  .responsiveFontMediumHeading {
+    font-size: 20px !important;
+  }
+
+  .responsiveFontSmallHeading {
+    font-size: 16px !important;
+  }
+
+  .responsiveFontExtraSmallHeading {
+    font-size: 14px;
+  }
+
+  .zza {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .slick-dots {
+    bottom: -10px;
+    width: 100%;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+  }
+
+}
+
+@media screen and (max-width: 990px) {
+  .buyBtn {
+    font-size: 12px;
+  }
+
+  .logoutFilter {
+    filter: brightness(2) !important;
+  }
+
+  .primaryBGMobile {
+    background-color: #262262 !important;
+  }
+
+  .dropdown-toggle3::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    filter: invert(1);
+  }
+}
+
+@media screen and (min-width: 990px) {
+
+  .mobileDisplayNoneDesktop {
+    display: none !important;
+  }
+}
