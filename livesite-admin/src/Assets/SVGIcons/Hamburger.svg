@@ -1,5 +1,0 @@
-<svg width="35" height="35" className='' viewBox="0 0 25 27"  xmlns="http://www.w3.org/2000/svg">
-  <path d="M7.5 16H24.5" stroke="var(--text-primary)" stroke-linecap="round" fill="var(--bg-main)"/>
-  <path d="M7.5 20H24.5" stroke="var(--text-primary)" stroke-linecap="round" fill="var(--bg-main)"/>
-  <path d="M7.5 12H24.5" stroke="var(--text-primary)" stroke-linecap="round" fill="var(--bg-main)"/>
-</svg>
